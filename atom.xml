@@ -6,7 +6,7 @@
   <link href="http://example.com/atom.xml" rel="self"/>
   
   <link href="http://example.com/"/>
-  <updated>2024-05-08T12:12:22.807Z</updated>
+  <updated>2024-05-08T10:50:17.690Z</updated>
   <id>http://example.com/</id>
   
   <author>
@@ -15,27 +15,6 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
-  
-  <entry>
-    <title>置顶 | Build in Public</title>
-    <link href="http://example.com/2049/01/01/Build%20in%20Public/"/>
-    <id>http://example.com/2049/01/01/Build%20in%20Public/</id>
-    <published>2049-01-01T04:00:00.000Z</published>
-    <updated>2024-05-08T12:12:22.807Z</updated>
-    
-    <content type="html"><![CDATA[<p>此页面创建于2024.4.28<br>在这里记录下探索GenAI和独立开发的历程</p><h3 id="4-28"><a href="#4-28" class="headerlink" title="4.28"></a>4.28</h3><p>盘点一下脑子里的项目，给一个预期收入和开发难度，判断下要做哪个：</p><ul><li>面向国内帆板玩家的俱乐部信息聚合<ul><li>MVP非常简单，搞个飞书表格，发个小红书就够了</li><li>短期没啥赚钱的机会，Scale的空间也不大（市场太小）</li><li>可以作为第一个项目，如果MVP跑通（有这个需求，关注的人足够多），可以简单做一个网站练手</li></ul></li><li>帆板器材推荐<ul><li>灵感来自Reddit上经常能刷到求推荐器材的帖子，以及YC的一个用AI+Reddit帖子推荐化妆品的项目：</li><li>盈利模式很清晰，从购买的商品抽佣。但和化妆品可以直接接入Amazon推荐体系不一样的是，帆板厂商都自己做独立站，Negotiation/BD是个问题</li><li>收取订阅费也许是个可行的方向，但一定要由于某些add on的服务，否则用一次就走了</li></ul></li><li>从Twitter/Reddit等平台挖掘没被解决的需求<ul><li>卖铲子的项目，需求来自我自己。</li><li>可以设定时任务，监控关键词，并用AI总结帖子内容，将适合阅读的推荐出来。</li><li>一个可以对标的项目是某个独立开发者做的买断型idea集合<a href="https://painkillerideas.com/">Get product ideas based on real people’s problems | Painkiller Ideas</a>，这个售价简直抢钱</li><li>非常适合SaaS</li><li>最近jina.ai出了一个HTML to Markdown的API, 非常适合用来做这个</li><li>前段时间刷到有人用RPA+AI做小红书相关的，这个需求的确定性很强：<a href="https://ia0969wpr2.feishu.cn/wiki/DRcfw8JohiERrQktaMtcvi5enke">https://ia0969wpr2.feishu.cn/wiki/DRcfw8JohiERrQktaMtcvi5enke</a></li></ul></li><li>面向Trucking Busines<ul><li>利基市场，玩家不多，在这个市场做了两年多PM，算是有点了解</li><li>是一个非常传统的行业，2024年了，货运需求还在靠电话敲定，这群比应该统统被AI替代掉</li><li>面向Dispatcher的产品有PLG的可能，且付费能力强</li><li>一个参考：浏览器插件能卖$99/M，技术也不复杂 <a href="https://dispatchrobot.ai/home">Dispatch Robot($99/M)</a></li><li>用Agent替代Dispatcher是我挺感兴趣的事，但这个市场太大了，不是独立开发者的机会</li></ul></li><li>电子族谱<ul><li>也是来自我的需求，过年的家族聚会上，一堆脸熟但不知道咋称呼的亲戚</li><li>赚不到钱，但可以试试开源。</li></ul></li></ul><h3 id="4-29"><a href="#4-29" class="headerlink" title="4.29"></a>4.29</h3><p>研究了一下支付，好麻烦</p><p>作为中国大陆人，我没法直接开通Stripe收款账户，要么办一个美国公司，要么搞一个香港银行卡。</p><p>当然有一些替代方案，比如buymecoffee，但作为一个SaaS收款方式，不太正式，容易被认为不靠谱。</p><h3 id="5-3"><a href="#5-3" class="headerlink" title="5.3"></a>5.3</h3><p>买了个域名，.com和.cn打包100块/年</p><h3 id="5-5"><a href="#5-5" class="headerlink" title="5.5"></a>5.5</h3><p>找到了简单的，适合独立开发SaaS的收费渠道 <a href="https://www.lemonsqueezy.com/">lemon squeezy</a></p><p>一个直觉：framer有成为下一个figma的潜力</p>]]></content>
-    
-    
-      
-      
-    <summary type="html">&lt;p&gt;此页面创建于2024.4.28&lt;br&gt;在这里记录下探索GenAI和独立开发的历程&lt;/p&gt;
-&lt;h3 id=&quot;4-28&quot;&gt;&lt;a href=&quot;#4-28&quot; class=&quot;headerlink&quot; title=&quot;4.28&quot;&gt;&lt;/a&gt;4.28&lt;/h3&gt;&lt;p&gt;盘点一下脑子里的项目，给一个</summary>
-      
-    
-    
-    
-    
-  </entry>
   
   <entry>
     <title>写在裸辞的第四个月</title>
