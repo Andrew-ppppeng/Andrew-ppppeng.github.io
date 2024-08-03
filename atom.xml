@@ -3,11 +3,11 @@
   <title>Andrew&#39;s Blog</title>
   
   
-  <link href="http://example.com/atom.xml" rel="self"/>
+  <link href="https://andrew-ppppeng.github.io/atom.xml" rel="self"/>
   
-  <link href="http://example.com/"/>
-  <updated>2024-06-16T12:27:09.560Z</updated>
-  <id>http://example.com/</id>
+  <link href="https://andrew-ppppeng.github.io/"/>
+  <updated>2024-08-03T12:54:37.604Z</updated>
+  <id>https://andrew-ppppeng.github.io/</id>
   
   <author>
     <name>Andrew Peng</name>
@@ -17,9 +17,32 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>尤氏族谱开发记录</title>
+    <link href="https://andrew-ppppeng.github.io/2024/08/03/FamilyTree/"/>
+    <id>https://andrew-ppppeng.github.io/2024/08/03/FamilyTree/</id>
+    <published>2024-08-03T04:00:00.000Z</published>
+    <updated>2024-08-03T12:54:37.604Z</updated>
+    
+    <content type="html"><![CDATA[<blockquote><p>一次生成式AI辅助开发的探索</p></blockquote><h3 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h3><p>每年过年，我姥姥族系都有一次聚会，大概三四十人一起吃饭。</p><p>对我这代小辈来说，一年见一次的长辈只是脸熟，记得名字就不错了，算的明白称呼那是不存在的，见了面只会说过年好。</p><p>今年聚会时想到，可以做一个电子族谱，对和我一样算不明白称呼的，只需要输入你是谁，就可以用算法生成其他所有人的称呼。</p><p>正好借此机会学点开发技术，探索一下GenAI辅助coding能做到什么程度。</p><h3 id="功能"><a href="#功能" class="headerlink" title="功能"></a>功能</h3><ol><li>动态生成族谱布局</li><li>输入当前浏览者，算出以当前浏览者为坐标，家族其它人的称呼</li></ol><h3 id="用到的工具"><a href="#用到的工具" class="headerlink" title="用到的工具"></a>用到的工具</h3><ol><li>AI-based IDE：<a href="https://www.cursor.com/">Cursor</a></li></ol><blockquote><p>一个基于VS Code魔改的AI-base IDE。<br>可以方便的将代码库作为上下文传给LLM，多次chat调整代码，并一键将AI生成代码diff/merge。<br>在学习开源代码和快速生成大段代码上比Github Copilot好用太多。<br>美中不足是，去年还在宣传自己是开源的，今年再去Github看，就剩个Readme和Issue Tracker了。</p></blockquote><ol start="2"><li>节点绘制算法：<a href="https://d3js.org/">D3.JS</a></li></ol><blockquote><p>一个用来做数据可视化的JavaScript库</p></blockquote><ol start="3"><li><p>计算称呼的算法：<a href="https://github.com/mumuy/relationship">https://github.com/mumuy/relationship</a></p><blockquote></blockquote></li><li><p>AI设计：<a href="https://js.design/">即时设计</a>，<a href="https://app.uizard.io/">Uizard</a></p></li></ol><blockquote><p>这个项目没用到太多设计，因为整个Family Tree是D3.JS画出来的SVG图，加设计样式比较费劲，不过还是提一下，感兴趣自己去玩。</p></blockquote><ol start="5"><li>切图：<a href="https://github.com/facebookresearch/segment-anything">https://github.com/facebookresearch/segment-anything</a></li></ol><blockquote><p>为了得到家庭成员的脸部信息，用了Meta开源的Segment Anything算法，将聚会的照片全量分割。<br>后来发现切出来的图太丑了，怕被打死，就默认放了彭于晏和刘亦菲的图 doge</p></blockquote><h3 id="代码开源"><a href="#代码开源" class="headerlink" title="代码开源"></a>代码开源</h3><p><a href="https://github.com/Andrew-ppppeng/FamilyTree-D3.JS-">https://github.com/Andrew-ppppeng/FamilyTree-D3.JS-</a></p><h3 id="脱敏Demo"><a href="#脱敏Demo" class="headerlink" title="脱敏Demo"></a>脱敏Demo</h3><p><a href="https://andrew-ppppeng.github.io/familyTree/demo/FamilyTree.html">https://andrew-ppppeng.github.io/familyTree/demo/FamilyTree.html</a></p><h3 id="一些AI开发经验"><a href="#一些AI开发经验" class="headerlink" title="一些AI开发经验"></a>一些AI开发经验</h3><ol><li>不要在一次Chat里描述复杂需求，最好自己先规划功能模块，再逐个生成。</li></ol><p>因为即使你说的明白，AI也未必理解。即使理解，也未必生成正确。即使正确，AI经常会把一堆功能写在一个文件里，很难阅读和调试。</p><ol start="2"><li>AI能帮你生成代码，但模块化，面向对象这些事还需要自己Review。  </li></ol><p>我最开始只关注写业务代码，后来发现500行代码堆在一块，想让AI拆分功能，抽象出一个config文件总是出错，最后自己手动改的</p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;blockquote&gt;
+&lt;p&gt;一次生成式AI辅助开发的探索&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h3 id=&quot;背景&quot;&gt;&lt;a href=&quot;#背景&quot; class=&quot;headerlink&quot; title=&quot;背景&quot;&gt;&lt;/a&gt;背景&lt;/h3&gt;&lt;p&gt;每年过年，我姥姥族系都有一次聚会，大概三四</summary>
+      
+    
+    
+    
+    
+  </entry>
+  
+  <entry>
     <title>帆板物理学</title>
-    <link href="http://example.com/2024/06/16/%E5%B8%86%E6%9D%BF%E7%89%A9%E7%90%86%E5%AD%A6/"/>
-    <id>http://example.com/2024/06/16/%E5%B8%86%E6%9D%BF%E7%89%A9%E7%90%86%E5%AD%A6/</id>
+    <link href="https://andrew-ppppeng.github.io/2024/06/16/%E5%B8%86%E6%9D%BF%E7%89%A9%E7%90%86%E5%AD%A6/"/>
+    <id>https://andrew-ppppeng.github.io/2024/06/16/%E5%B8%86%E6%9D%BF%E7%89%A9%E7%90%86%E5%AD%A6/</id>
     <published>2024-06-16T04:00:00.000Z</published>
     <updated>2024-06-16T12:27:09.560Z</updated>
     
@@ -40,8 +63,8 @@
   
   <entry>
     <title>写在裸辞的第四个月</title>
-    <link href="http://example.com/2024/04/05/%E5%86%99%E5%9C%A8%E8%A3%B8%E8%BE%9E%E7%9A%84%E7%AC%AC%E5%9B%9B%E4%B8%AA%E6%9C%88/"/>
-    <id>http://example.com/2024/04/05/%E5%86%99%E5%9C%A8%E8%A3%B8%E8%BE%9E%E7%9A%84%E7%AC%AC%E5%9B%9B%E4%B8%AA%E6%9C%88/</id>
+    <link href="https://andrew-ppppeng.github.io/2024/04/05/%E5%86%99%E5%9C%A8%E8%A3%B8%E8%BE%9E%E7%9A%84%E7%AC%AC%E5%9B%9B%E4%B8%AA%E6%9C%88/"/>
+    <id>https://andrew-ppppeng.github.io/2024/04/05/%E5%86%99%E5%9C%A8%E8%A3%B8%E8%BE%9E%E7%9A%84%E7%AC%AC%E5%9B%9B%E4%B8%AA%E6%9C%88/</id>
     <published>2024-04-05T04:00:00.000Z</published>
     <updated>2024-05-08T10:50:17.690Z</updated>
     
@@ -63,8 +86,8 @@
   
   <entry>
     <title>2023年终总结</title>
-    <link href="http://example.com/2024/01/31/2023%E5%B9%B4%E7%BB%88%E6%80%BB%E7%BB%93/"/>
-    <id>http://example.com/2024/01/31/2023%E5%B9%B4%E7%BB%88%E6%80%BB%E7%BB%93/</id>
+    <link href="https://andrew-ppppeng.github.io/2024/01/31/2023%E5%B9%B4%E7%BB%88%E6%80%BB%E7%BB%93/"/>
+    <id>https://andrew-ppppeng.github.io/2024/01/31/2023%E5%B9%B4%E7%BB%88%E6%80%BB%E7%BB%93/</id>
     <published>2024-01-31T04:00:00.000Z</published>
     <updated>2024-05-08T10:23:59.030Z</updated>
     
@@ -84,8 +107,8 @@
   
   <entry>
     <title>党岭|三日重装穿越攻略</title>
-    <link href="http://example.com/2023/05/29/%E5%85%9A%E5%B2%AD/"/>
-    <id>http://example.com/2023/05/29/%E5%85%9A%E5%B2%AD/</id>
+    <link href="https://andrew-ppppeng.github.io/2023/05/29/%E5%85%9A%E5%B2%AD/"/>
+    <id>https://andrew-ppppeng.github.io/2023/05/29/%E5%85%9A%E5%B2%AD/</id>
     <published>2023-05-29T04:00:00.000Z</published>
     <updated>2024-03-20T05:49:27.951Z</updated>
     
@@ -109,8 +132,8 @@
   
   <entry>
     <title>2022年终总结</title>
-    <link href="http://example.com/2023/03/30/2022%E5%B9%B4%E7%BB%88%E6%80%BB%E7%BB%93/"/>
-    <id>http://example.com/2023/03/30/2022%E5%B9%B4%E7%BB%88%E6%80%BB%E7%BB%93/</id>
+    <link href="https://andrew-ppppeng.github.io/2023/03/30/2022%E5%B9%B4%E7%BB%88%E6%80%BB%E7%BB%93/"/>
+    <id>https://andrew-ppppeng.github.io/2023/03/30/2022%E5%B9%B4%E7%BB%88%E6%80%BB%E7%BB%93/</id>
     <published>2023-03-30T04:00:00.000Z</published>
     <updated>2024-05-08T10:26:35.257Z</updated>
     
@@ -130,8 +153,8 @@
   
   <entry>
     <title>出逃12月</title>
-    <link href="http://example.com/2023/01/07/%E5%87%BA%E9%80%8312%E6%9C%88/"/>
-    <id>http://example.com/2023/01/07/%E5%87%BA%E9%80%8312%E6%9C%88/</id>
+    <link href="https://andrew-ppppeng.github.io/2023/01/07/%E5%87%BA%E9%80%8312%E6%9C%88/"/>
+    <id>https://andrew-ppppeng.github.io/2023/01/07/%E5%87%BA%E9%80%8312%E6%9C%88/</id>
     <published>2023-01-07T04:00:00.000Z</published>
     <updated>2024-02-01T12:50:18.538Z</updated>
     
@@ -154,8 +177,8 @@
   
   <entry>
     <title>UTM实践|获客来源与效果追踪</title>
-    <link href="http://example.com/2022/12/05/UTM%EF%BC%9A%E8%BF%BD%E8%B8%AA%E8%8E%B7%E5%AE%A2%E6%9D%A5%E6%BA%90%E4%B8%8E%E5%B9%BF%E5%91%8A%E6%95%88%E6%9E%9C/"/>
-    <id>http://example.com/2022/12/05/UTM%EF%BC%9A%E8%BF%BD%E8%B8%AA%E8%8E%B7%E5%AE%A2%E6%9D%A5%E6%BA%90%E4%B8%8E%E5%B9%BF%E5%91%8A%E6%95%88%E6%9E%9C/</id>
+    <link href="https://andrew-ppppeng.github.io/2022/12/05/UTM%EF%BC%9A%E8%BF%BD%E8%B8%AA%E8%8E%B7%E5%AE%A2%E6%9D%A5%E6%BA%90%E4%B8%8E%E5%B9%BF%E5%91%8A%E6%95%88%E6%9E%9C/"/>
+    <id>https://andrew-ppppeng.github.io/2022/12/05/UTM%EF%BC%9A%E8%BF%BD%E8%B8%AA%E8%8E%B7%E5%AE%A2%E6%9D%A5%E6%BA%90%E4%B8%8E%E5%B9%BF%E5%91%8A%E6%95%88%E6%9E%9C/</id>
     <published>2022-12-05T04:00:00.000Z</published>
     <updated>2024-03-20T05:50:45.722Z</updated>
     
@@ -178,8 +201,8 @@
   
   <entry>
     <title>隐居设想</title>
-    <link href="http://example.com/2022/09/26/%E9%9A%90%E5%B1%85%E8%AE%BE%E6%83%B3/"/>
-    <id>http://example.com/2022/09/26/%E9%9A%90%E5%B1%85%E8%AE%BE%E6%83%B3/</id>
+    <link href="https://andrew-ppppeng.github.io/2022/09/26/%E9%9A%90%E5%B1%85%E8%AE%BE%E6%83%B3/"/>
+    <id>https://andrew-ppppeng.github.io/2022/09/26/%E9%9A%90%E5%B1%85%E8%AE%BE%E6%83%B3/</id>
     <published>2022-09-26T04:00:00.000Z</published>
     <updated>2024-01-28T06:36:34.761Z</updated>
     
@@ -209,8 +232,8 @@
   
   <entry>
     <title>从Oculus Quest2到全屋翻墙</title>
-    <link href="http://example.com/2022/09/15/%E4%BB%8EOculus%20Quest2%E5%88%B0%E5%85%A8%E5%B1%8B%E7%BF%BB%E5%A2%99/"/>
-    <id>http://example.com/2022/09/15/%E4%BB%8EOculus%20Quest2%E5%88%B0%E5%85%A8%E5%B1%8B%E7%BF%BB%E5%A2%99/</id>
+    <link href="https://andrew-ppppeng.github.io/2022/09/15/%E4%BB%8EOculus%20Quest2%E5%88%B0%E5%85%A8%E5%B1%8B%E7%BF%BB%E5%A2%99/"/>
+    <id>https://andrew-ppppeng.github.io/2022/09/15/%E4%BB%8EOculus%20Quest2%E5%88%B0%E5%85%A8%E5%B1%8B%E7%BF%BB%E5%A2%99/</id>
     <published>2022-09-15T12:01:20.000Z</published>
     <updated>2024-05-08T11:06:38.179Z</updated>
     
@@ -230,8 +253,8 @@
   
   <entry>
     <title>2021年终总结</title>
-    <link href="http://example.com/2022/01/13/2021%E5%B9%B4%E7%BB%88%E6%80%BB%E7%BB%93/"/>
-    <id>http://example.com/2022/01/13/2021%E5%B9%B4%E7%BB%88%E6%80%BB%E7%BB%93/</id>
+    <link href="https://andrew-ppppeng.github.io/2022/01/13/2021%E5%B9%B4%E7%BB%88%E6%80%BB%E7%BB%93/"/>
+    <id>https://andrew-ppppeng.github.io/2022/01/13/2021%E5%B9%B4%E7%BB%88%E6%80%BB%E7%BB%93/</id>
     <published>2022-01-13T04:00:00.000Z</published>
     <updated>2024-01-31T05:46:40.561Z</updated>
     
@@ -251,8 +274,8 @@
   
   <entry>
     <title>一次荒野求生</title>
-    <link href="http://example.com/2022/01/03/%E8%8D%92%E9%87%8E%E6%B1%82%E7%94%9F/"/>
-    <id>http://example.com/2022/01/03/%E8%8D%92%E9%87%8E%E6%B1%82%E7%94%9F/</id>
+    <link href="https://andrew-ppppeng.github.io/2022/01/03/%E8%8D%92%E9%87%8E%E6%B1%82%E7%94%9F/"/>
+    <id>https://andrew-ppppeng.github.io/2022/01/03/%E8%8D%92%E9%87%8E%E6%B1%82%E7%94%9F/</id>
     <published>2022-01-03T06:01:20.000Z</published>
     <updated>2024-05-08T11:00:51.241Z</updated>
     
