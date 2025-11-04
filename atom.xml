@@ -6,7 +6,7 @@
   <link href="https://andrew-ppppeng.github.io/atom.xml" rel="self"/>
   
   <link href="https://andrew-ppppeng.github.io/"/>
-  <updated>2024-08-03T12:54:37.604Z</updated>
+  <updated>2025-11-04T06:48:28.872Z</updated>
   <id>https://andrew-ppppeng.github.io/</id>
   
   <author>
@@ -17,11 +17,118 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>用Claude code开发一个全球帆板运动俱乐部的导航站</title>
+    <link href="https://andrew-ppppeng.github.io/2025/09/20/%E5%B8%86%E6%9D%BF%E5%AF%BC%E8%88%AA%E7%AB%99/"/>
+    <id>https://andrew-ppppeng.github.io/2025/09/20/%E5%B8%86%E6%9D%BF%E5%AF%BC%E8%88%AA%E7%AB%99/</id>
+    <published>2025-09-20T04:00:00.000Z</published>
+    <updated>2025-11-04T06:48:28.872Z</updated>
+    
+    <content type="html"><![CDATA[<p>网站链接：<a href="https://windsurfing.top/">https://windsurfing.top</a></p><h3 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h3><p>本人是帆板运动爱好者，这项运动依赖风力和相对难以运输的设备，所以很多爱好者会去常年风力充沛的地方旅行，并租用当地俱乐部的器材。<br>在逛Reddit相关论坛的时候，发现很多人在问XXX区域有没有俱乐部推荐，所以想做一个帆板俱乐部导航站，帮帆板爱好者基于地理位置，提供的服务以及支持的水上运动类型去筛选俱乐部。</p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;p&gt;网站链接：&lt;a href=&quot;https://windsurfing.top/&quot;&gt;https://windsurfing.top&lt;/a&gt;&lt;/p&gt;
+&lt;h3 id=&quot;背景&quot;&gt;&lt;a href=&quot;#背景&quot; class=&quot;headerlink&quot; title=&quot;背景&quot;&gt;&lt;/a&gt;背景&lt;/h</summary>
+      
+    
+    
+    
+    
+  </entry>
+  
+  <entry>
+    <title>健康监测&amp;数字化</title>
+    <link href="https://andrew-ppppeng.github.io/2025/07/19/%E5%81%A5%E5%BA%B7%E7%9B%91%E6%B5%8B&amp;%E6%95%B0%E5%AD%97%E5%8C%96%20/"/>
+    <id>https://andrew-ppppeng.github.io/2025/07/19/%E5%81%A5%E5%BA%B7%E7%9B%91%E6%B5%8B&amp;%E6%95%B0%E5%AD%97%E5%8C%96%20/</id>
+    <published>2025-07-19T04:00:00.000Z</published>
+    <updated>2025-11-04T06:06:35.247Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="1-健康检测类APP是如何获取压力-能量-心情等数据的"><a href="#1-健康检测类APP是如何获取压力-能量-心情等数据的" class="headerlink" title="1- 健康检测类APP是如何获取压力/能量/心情等数据的"></a>1- 健康检测类APP是如何获取压力/能量/心情等数据的</h3><p><strong>STEP1 获取心跳数据（R-R间期数据）</strong></p><p>这里有两种方式——</p><ol><li>直接从Apple Health / Google Fit请求。 这种方式适用于用户有可穿戴设备，且能同步<strong>完整数据</strong>给第三方系统的。比如Apple Watch可以， 小米手环就不行。</li><li>引导用户将手指放到摄像头上，开启闪光灯，通过摄像头影像的光强度变化，来判定心跳情况。 这个技术叫PPG (Photoplethysmography，光电容积脉搏波描记法) </li></ol><p><strong>STEP2 数据预处理，清除掉异常数据</strong></p><ul><li>技术性异常：R-R间期数据中明显偏离正常范围的点（如&lt;300ms或&gt;2000ms）。</li><li>生理性异常：因早搏（PVC）、房颤（AFib）等病理状态导致的异常波动。</li></ul><p><strong>STEP3 计算HRV（这里有标准的算法）</strong></p><p><strong>STEP4 基于HRV算出压力/能量/心情的参考值（没有标准算法，各个APP自由发挥）</strong></p><h3 id="2-HRV是什么"><a href="#2-HRV是什么" class="headerlink" title="2- HRV是什么"></a>2- HRV是什么</h3><p>全称叫heart rate varibility（心率变异性），通俗理解就是反映心跳是否规律的数据。</p><p>它并不是一个指标，而是一个概念，有很多不同的分析维度。  最常见的是</p><ul><li>SDNN：全部R-R间期的标准差，反映<strong>整体自主神经调节能力，</strong>主要用于心血管等领域的健康评估，正常范围内值越高表示HRV越好（如果你有apple watch，Apple health默认展示的是这个）</li><li>rMSSD： 相邻R-R间期差异的均方根，<strong>敏感反映副交感神经（迷走神经）活性</strong>，一个较高的值通常意味着身体恢复良好、压力较小，能够更好地适应变化（检测焦虑水平和运动恢复状态用这个）</li></ul><p><strong>我们这个项目用到的分析维度：</strong></p><ol><li><strong>时域分析</strong>：</li></ol><p>通过直接统计心跳间隔（R-R间期）的波动来评估HRV</p><p>SDNN, rMSSD都是用这个方法分析的，时域分析的可解释性比较强</p><ol><li><strong>频域分析</strong>：</li></ol><p>通过傅里叶变换（FFT）或自回归模型（AR）将心率波动分解为不同频率成分的功率谱：</p><ul><li><strong>低频（LF, 0.04-0.15Hz）</strong>：反映<strong>交感神经和压力反应</strong>，部分受迷走神经调制。</li><li><strong>高频（HF, 0.15-0.4Hz）</strong>：反映副交感神经（迷走神经）活动，如深呼吸时的波动。</li><li>还有超低频、超高频…  我们用不到</li></ul><h3 id="3-影响HRV-RMSSD-的因素"><a href="#3-影响HRV-RMSSD-的因素" class="headerlink" title="3- 影响HRV (RMSSD) 的因素"></a>3- <strong>影响HRV (RMSSD) 的因素</strong></h3><ol><li><strong>生理因素</strong>：<ul><li>年龄（HRV随年龄增长下降）、性别（女性略高）、基因</li></ul></li><li><strong>病理因素</strong>：<ul><li>心脏病、糖尿病、抑郁症等疾病显著降低HRV。</li></ul></li><li><strong>生活方式</strong>：<ul><li><strong>运动与训练</strong>:<ul><li><strong>急性影响</strong>：高强度训练会暂时性地<strong>降低</strong>RMSSD值，这是身体需要恢复的正常信号。通常在训练后24至48小时内，RMSSD会逐渐回升。</li><li><strong>长期影响</strong>：规律且适度的有氧运动和力量训练，可以有效提升副交感神经张力，从而<strong>提高</strong>基线RMSSD水平。</li></ul></li><li><strong>睡眠</strong>: 充足且高质量的睡眠是身体恢复的关键。睡眠期间副交感神经占主导地位，因此好的睡眠会<strong>显著提高</strong>RMSSD值。相反，睡眠不足或睡眠质量差是导致RMSSD下降的最常见原因之一。</li><li><strong>营养与饮食</strong>:<ul><li><strong>均衡饮食</strong>：富含水果、蔬菜和Omega-3脂肪酸的饮食有助于抗炎和支持神经系统健康，可能对RMSSD有积极影响。</li><li><strong>进食时间</strong>：临近睡前进食大量食物，特别是高糖高脂的食物，会迫使消化系统在夜间工作，可能会干扰睡眠并<strong>降低</strong>RMSSD。</li></ul></li><li><strong>水分补充</strong>: 身体脱水会给心血管系统带来压力，导致心率上升，RMSSD<strong>下降</strong>。保持充足的水分是维持良好HRV水平的基础。</li><li><strong>酒精与咖啡因</strong>:<ul><li><strong>酒精</strong>：即使是少量酒精也会对睡眠结构产生负面影响，并抑制副交感神经活动，导致RMSSD在饮酒当晚及次日早晨<strong>大幅下降</strong>。</li><li><strong>咖啡因</strong>：作为一种兴奋剂，咖啡因会刺激交感神经系统，可能会暂时性地<strong>降低</strong>RMSSD值，其影响因个人代谢能力而异。</li></ul></li><li><strong>吸烟</strong>: 尼古丁会严重干扰自主神经系统的正常功能，长期吸烟与RMSSD值持续偏低密切相关。</li></ul></li><li><strong>心理与环境因素</strong> <ul><li><strong>压力</strong>:<ul><li><strong>急性压力</strong>：无论是来自工作、考试还是情绪激动，急性心理压力都会迅速激活“战斗或逃跑”反应，导致RMSSD<strong>瞬间降低</strong>。</li><li><strong>慢性压力</strong>：长期处于高压状态会导致副交感神经系统持续受到抑制，使RMSSD基线水平<strong>持续偏低</strong>。</li></ul></li><li><strong>情绪状态</strong>: 积极的情绪，如愉快、感激和放松，能够促进副交感神经活动，从而<strong>提高</strong>RMSSD。</li><li><strong>呼吸</strong>: 缓慢、深长的腹式呼吸（冥想和瑜伽中常见的呼吸方式）可以直接刺激迷走神经（副交感神经系统的主要神经），在短时间内有效<strong>提高</strong>RMSSD值。</li><li><strong>测量时间 (昼夜节律)</strong>: RMSSD值在一天内会自然波动。通常在夜间睡眠时达到峰值，在日间活动时较低。因此，为了获得可比较的数据，建议每天在<strong>同一时间、相同条件下</strong>（如清晨醒来后）进行测量。</li></ul></li></ol><h3 id="4-一些常见误区"><a href="#4-一些常见误区" class="headerlink" title="4- 一些常见误区"></a>4- 一些常见误区</h3><p><strong>误区1：“我的HRV只有十几，太低了，我需要改善HRV”</strong></p><p>解释：</p><p>HRV数值不是越高越好，每个个体的差异极大，所以不存在健康或不健康的 HRV，需关注自身基线变化趋势而非绝对值。</p><p><strong>误区2：单次测量结果绝对可信</strong></p><p>解释：</p><p>HRV易受短期因素（如饮酒、脱水）干扰，需长期跟踪。</p><p>一项《Nature》子刊研究指出，腕式PPG在静息状态下的HRV误差约为5-10%，而运动中误差可达20%以上。</p><h3 id="5-APP推荐与个人探索的最佳实践"><a href="#5-APP推荐与个人探索的最佳实践" class="headerlink" title="5- APP推荐与个人探索的最佳实践"></a>5- APP推荐与个人探索的最佳实践</h3><p>软件：Welltory</p><p>推荐原因：</p><ul><li>数据的权威/准确性<ul><li>公司成立于2016，是北美老牌健康检测公司，公司100+员工</li><li>有自己的research团队，partner with医学院发过很多期刊论文</li></ul></li><li>功能<ul><li>Measurement &amp; Data report<ul><li>基础功能，通过手机摄像头/可穿戴设备，分析心率变异性，进而得出焦虑程度，健康恢复状况，身体能量等指标</li></ul></li><li>cross-analysis（付费功能）<ul><li>这个是我觉得最有意思的功能，可以将国外主流的办公、娱乐、健身软件与welltory连接，这样它就能获取到每个app的使用时长，打开次数等数据，随后将这些数据与健康数据进行关联，得出诸如“你在下午三点工作效率最高”、“刷Tik Tok会显著增加你的stress level”等洞察，还会告诉你得出结论的样本量，置信度，皮尔森相关系数</li><li>此外，你也可以自定义标签，比如我最近想尝试服用[苏糖酸镁]对深度睡眠是否有积极影响，可以每次服药加一个tag，它会自动分析tag和你身体数据的关联关系，如果强关联则会生成report给你。</li></ul></li><li>Cross-platform &amp; data export<ul><li>健康类app要读取敏感数据，如果把数据放在自己服务器上，会有很严格的合规审查，所以大部分app做法是把数据处理算法放在本地。这会导致一个问题，IOS和Android数据不互通，且用户无法导出自己的数据。 Welltory是完成合规认证的，数据加密且支持跨平台和数据导出</li></ul></li></ul></li></ul><p>对HRV的理解：</p><p>目前市面上和HRV相关的app，主打两个方向：运动恢复 &amp; 焦虑检测。</p><p>我自己几个月体验，运动对HRV的影响要比心理因素显著的多，也就是说用HRV看运动恢复情况比焦虑检测更靠谱。 </p><p>工作完不成的焦虑对HRV的影响，远不如跑个十公里的影响（跑完十公里会显示Stress Level非常高，因为肌肉疲劳）</p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h3 id=&quot;1-健康检测类APP是如何获取压力-能量-心情等数据的&quot;&gt;&lt;a href=&quot;#1-健康检测类APP是如何获取压力-能量-心情等数据的&quot; class=&quot;headerlink&quot; title=&quot;1- 健康检测类APP是如何获取压力/能量/心情等数据的&quot;&gt;&lt;/a&gt;1- 健</summary>
+      
+    
+    
+    
+    
+  </entry>
+  
+  <entry>
+    <title>2024年终总结</title>
+    <link href="https://andrew-ppppeng.github.io/2025/03/19/2024%E5%B9%B4%E7%BB%88%E6%80%BB%E7%BB%93/"/>
+    <id>https://andrew-ppppeng.github.io/2025/03/19/2024%E5%B9%B4%E7%BB%88%E6%80%BB%E7%BB%93/</id>
+    <published>2025-03-19T04:00:00.000Z</published>
+    <updated>2025-11-04T06:06:01.248Z</updated>
+    
+    <content type="html"><![CDATA[<p>年初的预想是，这一年的主题是AI和独立开发。</p><p>年末总结发现，这一年的主题是旅行和爱情。</p><h3 id="Thailand"><a href="#Thailand" class="headerlink" title="Thailand"></a>Thailand</h3><p>二月末，在老家过完年，带我妈去泰国过夏天。</p><p>对我来说，这趟旅程的两个主题：Sports &amp; Fun。</p><p>Sports是游泳，潜水和帆板。Fun是红灯区和大麻。</p><p>第一次买大麻被坑了，1000B买了两支没标THC浓度的，没啥效果。</p><p>第二次买了27%THC的，又买了含100mg THC的抹茶蛋糕。 因为之前的大麻没啥效果，我误以为自己耐药性很强，抽完一支又把蛋糕一起干掉了，然后打了个摩的去红灯区，路上就来劲了，时速八十在车流里穿梭，想象自己在跑曼岛TT，快乐。 </p><p>至于红灯区，印象比较深的有两个，一个是芭提雅的Russian Strip Club，very firm and juicy tits，跳两分钟Stripper就会下台示意你tip her in underwear</p><p>第二个是曼谷一家ladyboy bar，加了一个ladyboy的ins，记录了从男生变成女生的全过程。Btw，her tits can milk！ </p><h3 id="Dalian"><a href="#Dalian" class="headerlink" title="Dalian"></a>Dalian</h3><p>五月到七月呆在大连，精进帆板技术，同时享受20°的夏天</p><p>五月份其实有点早，骑摩托吹海风还挺冷的，六月去会好很多。</p><p>买了新的板，Starboard的Isonic，139L的竞速板，步子迈的有点大，目前还进不去脚套，不过风好的时候可以快乐滑行。</p><h3 id="Yunnan"><a href="#Yunnan" class="headerlink" title="Yunnan"></a>Yunnan</h3><p>在云南一共呆了三个月。</p><p>起初只是去香格里拉徒步，顺便在普达措国家公园的音乐节蹦迪。</p><p>徒步完一路向南自驾，打算从昆明飞回家，然后去了喜洲的一家青旅，认识了义工阿门同学。</p><p>“我叫阿门，大门小门的门”</p><p>“来烤火”</p><p>“喝酒”</p><p>“有人想邀请我一起跳舞嘛”</p><p>和阿门同学在一起了。</p><p>青旅里有一项规定，禁止员工和客人谈恋爱，所以我们是地下恋情。</p><p>恋了一天，被店长发现了。</p><p>于是搬出去租房住，买了辆摩托车，每天去青旅找她。</p><p>后来嫌每天在一起的时间不够多，就把她从青旅拐走了，还和青旅的创始人打了个赌，赌我们三个月内分手，现在他欠我们一条烟。</p><p>青旅现在叫做暖暖汽车青旅，是他们花了四年时间改装的8000㎡的汽车营地和帐篷营地，每天晚上篝火狼人杀，白天也会组织各种活动，推荐所有去大理的人来玩。</p><h3 id="Hainan"><a href="#Hainan" class="headerlink" title="Hainan"></a>Hainan</h3><p>十二月，来到了东北人的第二故乡。</p><p>三亚新开了一个NCC数字游民中心，看环境很吸引人，大理也逐渐冷了，就准备去海南住段时间。</p><p>海南已经去过很多回了，没什么惊喜，帆板桨板冲浪都带阿门同学玩一圈，然后租车环岛。</p><p>作为一个P人，马上要到三亚了才联系NCC，发现没有单人间了，不想带女朋友住床位，就订了机票回东北看雪。</p><h3 id="Harbin"><a href="#Harbin" class="headerlink" title="Harbin"></a>Harbin</h3><p>二刷冰雪大世界（一刷应该还是在小学，因为身高不够一米四没坐上大滑梯，永远的痛）</p><p>现打的格瓦斯好喝，比罐装的好喝多了。</p><h3 id="ChengDu"><a href="#ChengDu" class="headerlink" title="ChengDu"></a>ChengDu</h3><p>过完年来成都找阿门同学，顺便找工作，准备settle down在此。</p><p>这边互联网岗位明显比北京少了很多，找了两周时间，只有四家给了面试邀约，接了唯一一个发offer的，是一个做出海APP的小厂，30人左右。</p><p>由于之前主要做2B, Web-based SaaS, 转成2C的APP，之前积累的很多Know-How都没用了，好多东西都要重新学。</p><p>薪酬比北京打了八折，生活成本略低一丢丢，主要是房价很便宜，我俩租了一个装修蛮不错的两居才2200，在北京大概要1W</p><p>办公地点是在春熙路Wework，蛮喜欢的，下了班不想回家有很多地方可逛。据说过了试用期可以Relocate到成都其他Wework。</p><p>考勤这块很不互联网，0900—1800一点弹性都没有，不过大家都不怎么加班。1800一过办公室走的差不多了。</p><p>冬天的成都天阴沉沉的，还好就要到春天了 ：）</p><h3 id="书"><a href="#书" class="headerlink" title="书"></a>书</h3><p>柴静的《看见》，在沈阳的一家青旅里读的（不要问我为什么在老家住青旅，就是喜欢）</p><p>文笔很好又很接地气，从社会观察和职场两个角度都有些共鸣</p><p>btw, 她最近两年开始经营YouTube频道，做了一些访谈和记录片都蛮不错的</p><p>《The beach》，在云南无所事事的时候买的，讲白人青年在泰国当背包客，追寻乌托邦小岛的故事。小李子演过同名的电影。 纯英文的书，真的非常耐读 XD</p><p>《阿特拉斯耸耸肩》，讲全世界变成均贫富、不担责的社会主义后，资本主义精英维护私有制，拯救世界的故事。三本大部头，买了很久终于看完了XD</p><h3 id="Summary"><a href="#Summary" class="headerlink" title="Summary"></a>Summary</h3><p>从23年十一月，到25年2月，15个月没上班了。</p><p>刚离职的时候怀揣独立开发数字游民的美梦，但耽于玩乐，加上执行力不够，很多东西都停留在idea阶段。直到钱花的差不多，才开始焦虑（最后两个月资产已经是负的了）</p><p>今年的目标是上线至少一个自己的产品，不管成绩如何，重要的是迈出第一步。</p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;p&gt;年初的预想是，这一年的主题是AI和独立开发。&lt;/p&gt;
+&lt;p&gt;年末总结发现，这一年的主题是旅行和爱情。&lt;/p&gt;
+&lt;h3 id=&quot;Thailand&quot;&gt;&lt;a href=&quot;#Thailand&quot; class=&quot;headerlink&quot; title=&quot;Thailand&quot;&gt;&lt;/a&gt;Thai</summary>
+      
+    
+    
+    
+    
+  </entry>
+  
+  <entry>
+    <title>AI搜索实践：Boss直聘浏览器插件</title>
+    <link href="https://andrew-ppppeng.github.io/2024/09/30/%E6%B5%8F%E8%A7%88%E5%99%A8%E6%8F%92%E4%BB%B6/"/>
+    <id>https://andrew-ppppeng.github.io/2024/09/30/%E6%B5%8F%E8%A7%88%E5%99%A8%E6%8F%92%E4%BB%B6/</id>
+    <published>2024-09-30T04:00:00.000Z</published>
+    <updated>2025-11-04T07:51:45.384Z</updated>
+    
+    <content type="html"><![CDATA[<p>最近在看工作机会。</p><p>业务方向主要看AI/SaaS/出海，prefer 100人以内的中小公司，因为Bullshit少，反应敏捷，成长空间更大。</p><p>小公司知名度低，投递前要调研下具体做什么行业，什么业务，团队背景，财务情况，产品数据等。 </p><p>这套流程可以抽象成一个Workflow，用AI实现信息检索和总结，所以做了个Boss直聘的插件，抓取公司基础信息生成Prompt，然后从各个领域调用搜索，汇总结果并产出公司信息报告</p><p><img src="%E6%B5%8F%E8%A7%88%E5%99%A8%E6%8F%92%E4%BB%B6/CompanyResearch.png" alt="图片"></p><hr><p>一些开发过程的记录：</p><ol><li>寻找好用的搜索引擎——</li></ol><p>输出质量极大取决于搜索引擎返回的结果，这里按时间顺序列一下尝试过的搜索源</p><p>Phase1  coze插件市场提供的Bing, Google, Jina Search</p><p>三个所有引擎都完全不可用，充斥着SEO优化后的垃圾，澳门赌场、性感少妇、时事新闻…</p><p>Phase2  <a href="https://exa.ai/">Exa | Web API for AI</a></p><p>专为AI优化的搜索API，可以指定搜索领域，自动优化query，提取有效文本内容，基于网址寻找竞品…</p><p>发现这个产品是因为Wordware。基于它开发的Twitter吐槽机火了以后，去它的Developer Guide看了一下，感觉不如Coze和Dify（我认为Workflow的交互形式优于Markdown文档，且受限于Markdown格式，Wordware无法表达出多个LLM并行运行的逻辑），但发现它的一个Demo用了这个搜索API：</p><p>Phase3</p><p>发现<a href="https://metaso.cn/">秘塔搜</a>做的挺牛逼的，准确率高，反应速度快，结论都有引用来源，还在前端做了思维导图等优化。 完全就是我想要的样子。   </p><p>找了一圈发现他们不提供API，Github上有人做了逆向的API，BUG多且不稳定，算了。</p><p>研究了一下这家公司，几十人，之前做AI写作的，敢在搜索这个兵家必争之地开团，NB。COO在B站有个号（<a href="https://space.bilibili.com/46394862/">王一快</a>），做的内容挺有意思的。</p><p>Phase4</p><p>发现国内版的coze.cn可以花一块钱白嫖好多token，于是试用了国内版。</p><p>国内版的缺点是模型只能用备案过的豆包、Kimi这些，优点是有很多国内用得到的工具，比如天网查，Bilibili，微信搜索等，这些在国际版上都需要自己找API接入。</p><p>整体体验是，能用但不太好用，模型差距还是很大，如果做用户分层，可以给免费用户用</p><ol start="2"><li>Cursor+Claude</li></ol><p>把Claude的会员退订了，Claude+Gemini免费的额度够用了，开了Cursor的会员，代码相关问题可以直接在Cursor里面问。</p><p>Cursor吸引我付费的点是自动Apply Changes。 没有这个功能，我需要自己对比新生成的代码改了什么地方，容易漏掉改动。</p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;p&gt;最近在看工作机会。&lt;/p&gt;
+&lt;p&gt;业务方向主要看AI/SaaS/出海，prefer 100人以内的中小公司，因为Bullshit少，反应敏捷，成长空间更大。&lt;/p&gt;
+&lt;p&gt;小公司知名度低，投递前要调研下具体做什么行业，什么业务，团队背景，财务情况，产品数据等。 &lt;/p&gt;
+&lt;</summary>
+      
+    
+    
+    
+    
+  </entry>
+  
+  <entry>
+    <title>震惊，居然有人把GAP YEAR当高三来过</title>
+    <link href="https://andrew-ppppeng.github.io/2024/08/13/%E8%BD%AC%E8%BD%BD%E5%AD%97%E8%8A%82%E5%8D%B7%E7%8E%8BGap/"/>
+    <id>https://andrew-ppppeng.github.io/2024/08/13/%E8%BD%AC%E8%BD%BD%E5%AD%97%E8%8A%82%E5%8D%B7%E7%8E%8BGap/</id>
+    <published>2024-08-13T04:00:00.000Z</published>
+    <updated>2024-08-13T07:28:39.994Z</updated>
+    
+    <content type="html"><![CDATA[<p>公众号的link：<a href="https://mp.weixin.qq.com/s/cMmCn91Vp0_4qdCRUDKXGg">https://mp.weixin.qq.com/s/cMmCn91Vp0_4qdCRUDKXGg</a></p><p>卷王老哥的GAP YEAR文档：<a href="https://bcuybtd4wj.feishu.cn/docx/OjordjsvfocXRexowqKcRHtKn2e">https://bcuybtd4wj.feishu.cn/docx/OjordjsvfocXRexowqKcRHtKn2e</a></p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;p&gt;公众号的link：&lt;a href=&quot;https://mp.weixin.qq.com/s/cMmCn91Vp0_4qdCRUDKXGg&quot;&gt;https://mp.weixin.qq.com/s/cMmCn91Vp0_4qdCRUDKXGg&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;卷王老哥的GA</summary>
+      
+    
+    
+    
+    
+  </entry>
+  
+  <entry>
     <title>尤氏族谱开发记录</title>
     <link href="https://andrew-ppppeng.github.io/2024/08/03/FamilyTree/"/>
     <id>https://andrew-ppppeng.github.io/2024/08/03/FamilyTree/</id>
     <published>2024-08-03T04:00:00.000Z</published>
-    <updated>2024-08-03T12:54:37.604Z</updated>
+    <updated>2025-11-04T06:54:36.015Z</updated>
     
     <content type="html"><![CDATA[<blockquote><p>一次生成式AI辅助开发的探索</p></blockquote><h3 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h3><p>每年过年，我姥姥族系都有一次聚会，大概三四十人一起吃饭。</p><p>对我这代小辈来说，一年见一次的长辈只是脸熟，记得名字就不错了，算的明白称呼那是不存在的，见了面只会说过年好。</p><p>今年聚会时想到，可以做一个电子族谱，对和我一样算不明白称呼的，只需要输入你是谁，就可以用算法生成其他所有人的称呼。</p><p>正好借此机会学点开发技术，探索一下GenAI辅助coding能做到什么程度。</p><h3 id="功能"><a href="#功能" class="headerlink" title="功能"></a>功能</h3><ol><li>动态生成族谱布局</li><li>输入当前浏览者，算出以当前浏览者为坐标，家族其它人的称呼</li></ol><h3 id="用到的工具"><a href="#用到的工具" class="headerlink" title="用到的工具"></a>用到的工具</h3><ol><li>AI-based IDE：<a href="https://www.cursor.com/">Cursor</a></li></ol><blockquote><p>一个基于VS Code魔改的AI-base IDE。<br>可以方便的将代码库作为上下文传给LLM，多次chat调整代码，并一键将AI生成代码diff/merge。<br>在学习开源代码和快速生成大段代码上比Github Copilot好用太多。<br>美中不足是，去年还在宣传自己是开源的，今年再去Github看，就剩个Readme和Issue Tracker了。</p></blockquote><ol start="2"><li>节点绘制算法：<a href="https://d3js.org/">D3.JS</a></li></ol><blockquote><p>一个用来做数据可视化的JavaScript库</p></blockquote><ol start="3"><li><p>计算称呼的算法：<a href="https://github.com/mumuy/relationship">https://github.com/mumuy/relationship</a></p><blockquote></blockquote></li><li><p>AI设计：<a href="https://js.design/">即时设计</a>，<a href="https://app.uizard.io/">Uizard</a></p></li></ol><blockquote><p>这个项目没用到太多设计，因为整个Family Tree是D3.JS画出来的SVG图，加设计样式比较费劲，不过还是提一下，感兴趣自己去玩。</p></blockquote><ol start="5"><li>切图：<a href="https://github.com/facebookresearch/segment-anything">https://github.com/facebookresearch/segment-anything</a></li></ol><blockquote><p>为了得到家庭成员的脸部信息，用了Meta开源的Segment Anything算法，将聚会的照片全量分割。<br>后来发现切出来的图太丑了，怕被打死，就默认放了彭于晏和刘亦菲的图 doge</p></blockquote><h3 id="代码开源"><a href="#代码开源" class="headerlink" title="代码开源"></a>代码开源</h3><p><a href="https://github.com/Andrew-ppppeng/FamilyTree-D3.JS-">https://github.com/Andrew-ppppeng/FamilyTree-D3.JS-</a></p><h3 id="脱敏Demo"><a href="#脱敏Demo" class="headerlink" title="脱敏Demo"></a>脱敏Demo</h3><p><a href="https://andrew-ppppeng.github.io/familyTree/demo/FamilyTree.html">https://andrew-ppppeng.github.io/familyTree/demo/FamilyTree.html</a></p><h3 id="一些AI开发经验"><a href="#一些AI开发经验" class="headerlink" title="一些AI开发经验"></a>一些AI开发经验</h3><ol><li>不要在一次Chat里描述复杂需求，最好自己先规划功能模块，再逐个生成。</li></ol><p>因为即使你说的明白，AI也未必理解。即使理解，也未必生成正确。即使正确，AI经常会把一堆功能写在一个文件里，很难阅读和调试。</p><ol start="2"><li>AI能帮你生成代码，但模块化，面向对象这些事还需要自己Review。  </li></ol><p>我最开始只关注写业务代码，后来发现500行代码堆在一块，想让AI拆分功能，抽象出一个config文件总是出错，最后自己手动改的</p>]]></content>
     
@@ -135,9 +242,9 @@
     <link href="https://andrew-ppppeng.github.io/2023/03/30/2022%E5%B9%B4%E7%BB%88%E6%80%BB%E7%BB%93/"/>
     <id>https://andrew-ppppeng.github.io/2023/03/30/2022%E5%B9%B4%E7%BB%88%E6%80%BB%E7%BB%93/</id>
     <published>2023-03-30T04:00:00.000Z</published>
-    <updated>2024-05-08T10:26:35.257Z</updated>
+    <updated>2025-11-04T08:01:20.055Z</updated>
     
-    <content type="html"><![CDATA[<h3 id="山与摩托车"><a href="#山与摩托车" class="headerlink" title="山与摩托车"></a>山与摩托车</h3><p>这一年的夏天或许是最快乐的一个夏天</p><p>每个周末都会骑摩托穿行在山林里，亦或是跟俱乐部一起徒步十几公里，翻越一个又一个野山头</p><p>对于我这种闲不住想探索世界的人，交通工具的升级能给我带来极大的幸福感提升。</p><p>有了自行车，就可以探索家附近十公里的每个地点，有了电动车，感觉北京城区都在自己的掌控范围内，有了摩托车，整个北京市都能在几小时内穿越。</p><p>摩托车驾照算是半买半考的，2200块，一天下证。如果算上时间成本，可以说是物美价廉，唯一的缺点是有点折腾，因为要去河北或者山东的小城市考试。 晚上十一点左右集合，坐一晚上车，第二天四点到。 吃个早饭办个手续就可以开考，一天把科一到科四全部搞定。</p><p>困在家里时间久了，就会抑郁。在山野里飞驰的时候，才感觉自己活着。<br>即使是冬天，没事的时候也喜欢骑电动车在城区里闲逛，冷风吹得整个脸僵硬，手也不听使唤，心里却开心的很。</p><p>冬天可玩的东西少了很多，周围也再没有一点绿色，很容易抑郁。  想起来12月份去厦门海南的那一趟旅行，刚下飞机的时候，真的是看着周围的绿色，就能笑出声来，我就像个傻逼一样拉着行李箱看着绿化带边走边笑。</p><p>从海南回来后的工作有点傻逼，每天上班充满怒火，下午四点左右就会从冰箱里拿出冻好的精酿，干掉两三瓶，七点左右下班，带着醉意骑车。我有一个恶趣味，在骑电动车的时候喜欢吓唬别人，尤其是不守规矩的，闯红灯的行人和逆行的电动车，以不打算刹车的姿态向他们冲过去，在最后一刻刹住。有点像西部牛仔拔枪。</p><h3 id="封控和躲猫猫"><a href="#封控和躲猫猫" class="headerlink" title="封控和躲猫猫"></a>封控和躲猫猫</h3><p>4.1 上海封城，那段时间每天都上推，看主流宣传机器之外的世界有多么不堪，后来通感搞的自己有点抑郁，毕竟无能为力，算了，不看当不知道。 为了防止同样的事情发生在自己身上，下单了一套大白同款防护服，万一被封可以伪装成大白混出去。</p><p>过了一周多，我家封了。 这是第一次被封，原因是舍友“时空伴随”，不得不说造词还是你党厉害。室友接到居委会电话立刻告诉了我，我收拾了帐篷睡袋换洗衣服，打车到了公司，随后几天在公司和家之间的一个公园里过夜。 早春的每一天都要跟自然贴贴。</p><p>睡了几晚，开始倒春寒了，睡袋顶不住，于是跑到天津滨海新区远程办公。 在一个地上地铁站我见到了今年最美的晚霞。<img src="https://img2.imgtp.com/2024/05/08/X7C2OvYn.jpg" width=256 height=256 alt="tianjin_sunset.jpg" title="tianjin_sunset.jpg"  /></p><hr><p>入夏后北京逐渐放开，但所有的LiveHouse还是关停，憋得难受，后来去了趟阿那亚，去蹦海边音乐节。 音乐节的舞台冲着海，海滩上有两排吊床，躺在吊床上看太阳落下，乐队试音，晚风带着海的气息吹在脸上，人们在这片沙滩上起舞。 </p><p>那时候正在学习正念，正念最重要的是将思维聚焦于当下。在城市里很难做到的正念，在海边像呼吸一样自然。</p><p>音乐节结束去Breeze Bar喝酒，遇到一个大爷跟我拼桌。我们有一句没一句的聊天。他说自己在阿那亚买了两套房，平时在北京照顾孙子，拖家带狗来的。狗是一只泰迪，很乖，乖的像只假狗。</p><hr><p>十一月开始北京疫情又严峻起来了，这次躲猫猫到了海南。</p><h3 id="北纬19°的海风"><a href="#北纬19°的海风" class="headerlink" title="北纬19°的海风"></a>北纬19°的海风</h3><p>还有什么比喝着酒看着大海码字更快乐的呢</p><p>好像有点太快乐了，以至于没什么想说的。大概是快乐的日子没什么写作的欲望，只有操蛋的时候才想记录，文章憎命达。</p><p>感谢人类糟糕的记忆力，让我们能忘却苦难，至少吹着北纬19°的海风，我平安喜乐的像没有任何操蛋的事情发生。</p><p>目前的规划是五月份辞职，换辆排量更大的摩托车，摩旅西藏，川藏入滇藏出，然后在大理避暑，学点新技术，想想接下来做什么。</p><p>去年夏天，我跟一群朋友们说冬天离职去海南冲浪，食言了。  艰难的就业形势和熟悉的工作内容带来的舒适圈让我没能迈出那一步。 希望明年能有更多的变化把。</p><h3 id="文学与游戏"><a href="#文学与游戏" class="headerlink" title="文学与游戏"></a>文学与游戏</h3><p>最近在玩城市天际线，虽然是2015年出的游戏，但比之前玩过的戴森球优秀太多了。游戏内容就是从零开始建造一座城市，非常拟真的那种，涉及到道路规划，环境治理，居民幸福度，城投预算，治安消防医疗人口等等。</p><p>对于我这种天天骂北京城市规划的人来说，literally给了我一个你行你上的机会</p><p>如果你想了解一个大型城市是如何运作的，这个游戏会很有启发。 玩完这个游戏后还读了一些城市规划的书和文章：</p><p>《纽约：一座超级城市是如何运转的》</p><p>《美国大城市的死与生》</p><p><a href="http://www.21jingji.com/article/20210111/herald/322ccd0ccdc4526d3e094e266e97471a.html">控不住的人口：从国际经验看北京上海等超大城市人口发展趋势 - 21经济网 (21jingji.com)</a></p><hr><p>受时代影响，今年还读了一些讲述荒唐历史的纪实文学，比如《一百人的十年》《叫魂》。</p><p>时代在变，但人性是不变的，从史书里能看到不少当代的影子。</p><h2 id="Final"><a href="#Final" class="headerlink" title="Final"></a>Final</h2><p>我是个闲不住的人，总想四处看看，回顾这一整年，其实因为疫情我反倒有机会去了更多的地方。抓住每个远程办公的机会，在到处是淡季的时候享受一个人的旅行，和傻逼政策斗智斗勇，密室逃脱。</p><p>今年没那么多变化。去年至少经历了从学生到职场人的转变，今年一直在同一家公司，做差不多的工作。</p><p>希望明年能有更精彩的故事。</p><hr>]]></content>
+    <content type="html"><![CDATA[<h3 id="山与摩托车"><a href="#山与摩托车" class="headerlink" title="山与摩托车"></a>山与摩托车</h3><p>这一年的夏天或许是最快乐的一个夏天</p><p>每个周末都会骑摩托穿行在山林里，亦或是跟俱乐部一起徒步十几公里，翻越一个又一个野山头</p><p>对于我这种闲不住想探索世界的人，交通工具的升级能给我带来极大的幸福感提升。</p><p>有了自行车，就可以探索家附近十公里的每个地点，有了电动车，感觉北京城区都在自己的掌控范围内，有了摩托车，整个北京市都能在几小时内穿越。</p><p>摩托车驾照算是半买半考的，2200块，一天下证。如果算上时间成本，可以说是物美价廉，唯一的缺点是有点折腾，因为要去河北或者山东的小城市考试。 晚上十一点左右集合，坐一晚上车，第二天四点到。 吃个早饭办个手续就可以开考，一天把科一到科四全部搞定。</p><p>困在家里时间久了，就会抑郁。在山野里飞驰的时候，才感觉自己活着。<br>即使是冬天，没事的时候也喜欢骑电动车在城区里闲逛，冷风吹得整个脸僵硬，手也不听使唤，心里却开心的很。</p><p>冬天可玩的东西少了很多，周围也再没有一点绿色，很容易抑郁。  想起来12月份去厦门海南的那一趟旅行，刚下飞机的时候，真的是看着周围的绿色，就能笑出声来，我就像个傻逼一样拉着行李箱看着绿化带边走边笑。</p><p>从海南回来后的工作有点傻逼，每天上班充满怒火，下午四点左右就会从冰箱里拿出冻好的精酿，干掉两三瓶，七点左右下班，带着醉意骑车。我有一个恶趣味，在骑电动车的时候喜欢吓唬别人，尤其是不守规矩的，闯红灯的行人和逆行的电动车，以不打算刹车的姿态向他们冲过去，在最后一刻刹住。有点像西部牛仔拔枪。</p><h3 id="封控和躲猫猫"><a href="#封控和躲猫猫" class="headerlink" title="封控和躲猫猫"></a>封控和躲猫猫</h3><p>4.1 上海封城，那段时间每天都上推，看主流宣传机器之外的世界有多么不堪，后来通感搞的自己有点抑郁，毕竟无能为力，算了，不看当不知道。 为了防止同样的事情发生在自己身上，下单了一套大白同款防护服，万一被封可以伪装成大白混出去。</p><p>过了一周多，我家封了。 这是第一次被封，原因是舍友“时空伴随”，不得不说造词还是你党厉害。室友接到居委会电话立刻告诉了我，我收拾了帐篷睡袋换洗衣服，打车到了公司，随后几天在公司和家之间的一个公园里过夜。 早春的每一天都要跟自然贴贴。</p><p>睡了几晚，开始倒春寒了，睡袋顶不住，于是跑到天津滨海新区远程办公。 在一个地上地铁站我见到了今年最美的晚霞。<img src="https://imgur.com/IIgX724" width=256 height=256 alt="tianjin_sunset.jpg" title="tianjin_sunset.jpg"  /></p><blockquote class="imgur-embed-pub" lang="en" data-id="IIgX724"><a href="https://imgur.com/IIgX724">View post on imgur.com</a></blockquote><script async src="//s.imgur.com/min/embed.js" charset="utf-8"></script><hr><p>入夏后北京逐渐放开，但所有的LiveHouse还是关停，憋得难受，后来去了趟阿那亚，去蹦海边音乐节。 音乐节的舞台冲着海，海滩上有两排吊床，躺在吊床上看太阳落下，乐队试音，晚风带着海的气息吹在脸上，人们在这片沙滩上起舞。 </p><p>那时候正在学习正念，正念最重要的是将思维聚焦于当下。在城市里很难做到的正念，在海边像呼吸一样自然。</p><p>音乐节结束去Breeze Bar喝酒，遇到一个大爷跟我拼桌。我们有一句没一句的聊天。他说自己在阿那亚买了两套房，平时在北京照顾孙子，拖家带狗来的。狗是一只泰迪，很乖，乖的像只假狗。</p><hr><p>十一月开始北京疫情又严峻起来了，这次躲猫猫到了海南。</p><h3 id="北纬19°的海风"><a href="#北纬19°的海风" class="headerlink" title="北纬19°的海风"></a>北纬19°的海风</h3><p>还有什么比喝着酒看着大海码字更快乐的呢</p><p>好像有点太快乐了，以至于没什么想说的。大概是快乐的日子没什么写作的欲望，只有操蛋的时候才想记录，文章憎命达。</p><p>感谢人类糟糕的记忆力，让我们能忘却苦难，至少吹着北纬19°的海风，我平安喜乐的像没有任何操蛋的事情发生。</p><p>目前的规划是五月份辞职，换辆排量更大的摩托车，摩旅西藏，川藏入滇藏出，然后在大理避暑，学点新技术，想想接下来做什么。</p><p>去年夏天，我跟一群朋友们说冬天离职去海南冲浪，食言了。  艰难的就业形势和熟悉的工作内容带来的舒适圈让我没能迈出那一步。 希望明年能有更多的变化把。</p><h3 id="文学与游戏"><a href="#文学与游戏" class="headerlink" title="文学与游戏"></a>文学与游戏</h3><p>最近在玩城市天际线，虽然是2015年出的游戏，但比之前玩过的戴森球优秀太多了。游戏内容就是从零开始建造一座城市，非常拟真的那种，涉及到道路规划，环境治理，居民幸福度，城投预算，治安消防医疗人口等等。</p><p>对于我这种天天骂北京城市规划的人来说，literally给了我一个你行你上的机会</p><p>如果你想了解一个大型城市是如何运作的，这个游戏会很有启发。 玩完这个游戏后还读了一些城市规划的书和文章：</p><p>《纽约：一座超级城市是如何运转的》</p><p>《美国大城市的死与生》</p><p><a href="http://www.21jingji.com/article/20210111/herald/322ccd0ccdc4526d3e094e266e97471a.html">控不住的人口：从国际经验看北京上海等超大城市人口发展趋势 - 21经济网 (21jingji.com)</a></p><hr><p>受时代影响，今年还读了一些讲述荒唐历史的纪实文学，比如《一百人的十年》《叫魂》。</p><p>时代在变，但人性是不变的，从史书里能看到不少当代的影子。</p><h2 id="Final"><a href="#Final" class="headerlink" title="Final"></a>Final</h2><p>我是个闲不住的人，总想四处看看，回顾这一整年，其实因为疫情我反倒有机会去了更多的地方。抓住每个远程办公的机会，在到处是淡季的时候享受一个人的旅行，和傻逼政策斗智斗勇，密室逃脱。</p><p>今年没那么多变化。去年至少经历了从学生到职场人的转变，今年一直在同一家公司，做差不多的工作。</p><p>希望明年能有更精彩的故事。</p><hr>]]></content>
     
     
       
